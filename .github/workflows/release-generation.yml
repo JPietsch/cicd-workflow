@@ -31,7 +31,7 @@ jobs:
     output:
       name: "Output"
       runs-on: ubuntu-latest
-        needs: release-generation
+      needs: release-generation
         steps:
           - run: echo ${{needs.release-generation.version.version_tag }} 
           - run: echo ${{needs.release-generation.version.version }} 
