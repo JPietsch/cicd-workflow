@@ -8,7 +8,7 @@ on:
       - closed
     branches:
       - main
-      
+
 jobs:
   release-generation:
     name: "Test and Run"
@@ -28,10 +28,9 @@ jobs:
           format: "${major}.${minor}.${patch}"
           short_tags: false
           bump_each_commit: false
-    output:
-      name: "Output"
-      runs-on: ubuntu-latest
-      needs: release-generation
-      steps:
-        - run: echo ${{needs.release-generation.version.version_tag }} 
-        - run: echo ${{needs.release-generation.version.version }} 
+  output:
+    name: "Output"
+    runs-on: ubuntu-latest
+    needs: release-generation
+    steps:
+      - run: echo ${{needs.release-generation.outputs.version}}
